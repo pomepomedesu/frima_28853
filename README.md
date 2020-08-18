@@ -115,3 +115,14 @@
 ### Association
 
 - belongs_to :item
+
+## prefecture(active_hash)テーブル
+
+| Column           | Type       | Option      |
+| ---------------- | ------------------------ |
+| prefecture       | string     | null: false |
+
+### Association
+
+- belongs_to :item
+- has_many :address
