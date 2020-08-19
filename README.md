@@ -28,6 +28,11 @@
 | name               | string     | null: false                     |
 | price              | integer    | null: false                     |
 | user               | references | null: false, foreign_key: true  |
+| category_id        | integer    | null: false, foreign_key: true  |
+| condition_id       | integer    | null: false, foreign_key: true  |
+| sipping_charges_id | integer    | null: false, foreign_key: true  |
+| prefecture_id      | integer    | null: false, foreign_key: true  |
+| delivery_days_id   | integer    | null: false, foreign_key: true  |
 
 ### Association
 
@@ -63,5 +68,3 @@
 ### Association
 
 - belongs_to :buyer
-- belongs_to :prefecture
-
