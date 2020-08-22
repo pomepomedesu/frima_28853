@@ -3,15 +3,26 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :nickname,        presence: true
-  validates :email,                 presence: true, uniqueness: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
-  validates :password,              presence: true, confirmation: true, length: {minimum: 6}, format: {with: /\A[a-zA-Z0-9]+\z/}
-  validates :password_confirmation, presence: true
   with_options presence: true do
-    validates :first_name,      format: {with: /\A[ぁ-んァ-ン一-龥]/}
-    validates :last_name,       format: {with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/}
-    validates :last_name_kana,  format: {with: /\A[ァ-ヶー－]+\z/}
-    validates :birth_day 
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
+    VALID_ZENKAKU_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+    VALID_KATAKANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
+
+    validates :nickname
+    validates :email,                  uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+    validates :password,               confirmation: true, format: { with: PASSWORD_REGEX}
+    validates :password_confirmation
+    validates :birth_day
+    
+    with_options format: {with: VALID_ZENKAKU_NAME_REGEX} do
+      validates :first_name                                
+      validates :last_name                                
+    end
+
+    with_options format: {with: VALID_KATAKANA_NAME_REGEX} do
+      validates :first_name_kana                           
+      validates :last_name_kana  
+    end
   end
 end
