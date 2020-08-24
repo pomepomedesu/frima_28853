@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name,               length: {maximum: 40}
     validates :writings,           length: {maximum: 1000}
-    validates :price,              format: {with: VALID_PRICE_REGEX }
+    validates :price,              length: { in: 300..9,999,999}, format: {with: VALID_PRICE_REGEX }
     validates :user_id
       with_options numericality: { other_than: 1 } do
         validates :category_id
