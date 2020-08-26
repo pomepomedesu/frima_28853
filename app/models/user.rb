@@ -5,12 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
+  VALID_ZENKAKU_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  VALID_KATAKANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
   with_options presence: true do
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
-    VALID_ZENKAKU_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
-    VALID_KATAKANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
-
     validates :nickname
     validates :email,                  uniqueness: true, format: { with: VALID_EMAIL_REGEX }
     validates :password,               confirmation: true, format: { with: PASSWORD_REGEX}
