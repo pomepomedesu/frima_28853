@@ -12,7 +12,7 @@
     profit.textContent = profit_price
   });
 }
-window.addEventListener('load', caluculation)
+window.addEventListener('click', caluculation)
 
 
 
