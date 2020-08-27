@@ -23,11 +23,5 @@ class Item < ApplicationRecord
   end   
 
   belongs_to :user
-  has_one :buyer
   has_one_attached :image
-  has_many :category
-  has_many :condition
-  has_many :delivery_days
-  has_many :prefecture
-  has_many :shipping_charges
 end
