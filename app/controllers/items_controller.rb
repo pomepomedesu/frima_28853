@@ -22,6 +22,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path
+    else
+      render 'show'
+  end
+
   def move_to_index
     unless user_signed_in?
       redirect_to action: :index
