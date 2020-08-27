@@ -16,9 +16,9 @@ class Item < ApplicationRecord
       with_options numericality: { other_than: 1 } do
         validates :category_id
         validates :condition_id
-        validates :shipping_charges_id
+        validates :shipping_charge_id
         validates :prefecture_id
-        validates :delivery_days_id
+        validates :delivery_day_id
       end
   end   
 
@@ -27,7 +27,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_many :category
   has_many :condition
-  has_many :delivery_days
+  has_many :delivery_day
   has_many :prefecture
-  has_many :shipping_charges
+  has_many :shipping_charge
 end
