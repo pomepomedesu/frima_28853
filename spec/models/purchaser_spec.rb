@@ -46,6 +46,11 @@ RSpec.describe Purchaser, type: :model do
       expect(@purchaser.errors.full_messages).to include("City can't be blank")
     end
 
+    it '建物の名前が、空でも保存できる' do
+      @purchaser.building_name = nil
+      expect(@purchaser).to be_valid
+    end
+
     it '住所の番地が空だと保存できない' do
       @purchaser.house_number= nil
       @purchaser.valid?
