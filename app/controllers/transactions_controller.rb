@@ -41,6 +41,7 @@ class TransactionsController < ApplicationController
     )
   end
 
+  
   def move_to_sign_up
     unless user_signed_in?
       render 'devise/sessions/new'
