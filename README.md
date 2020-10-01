@@ -56,7 +56,7 @@
 ## addressesテーブル
  
 | Column        | Type       | Option                                       |
-| ------------- | --------------------------------------------------------- |
+| ------------- | ---------- | -------------------------------------------- |
 | buyer         | references |              null: false,  foreign_key: true |
 | postal_code   | string     | default: "", null: false,                    |
 | prefecture    | integer    |              null: false                     |
@@ -64,7 +64,7 @@
 | house_number  | string     | default: "" , null: false                    |
 | building_name | string     |                                              |
 | phone_number  | string     | default: "",  null: false                    |
- 
+
 ### Association
 
 - belongs_to :buyer
